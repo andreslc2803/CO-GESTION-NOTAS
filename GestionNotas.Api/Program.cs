@@ -1,23 +1,23 @@
+using GestionNotas.Api.Api.Extensions;
+using GestionNotas.Api.Middleware;
+using GestionNotas.Api.Infrastructure.Extensions;
+using GestionNotas.Api.Application.Extensions; ;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
+app.MapGet("/", () => Results.Redirect("/scalar/v1")).ExcludeFromDescription();
 app.MapControllers();
+app.MapSwaggerConfiguration();
+app.UseOpenApiFileExport();
 
 app.Run();

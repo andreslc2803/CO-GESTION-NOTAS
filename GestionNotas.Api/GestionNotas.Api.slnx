@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="../GestionNotas.Application/GestionNotas.Application.csproj" />
+  <Project Path="../GestionNotas.Domain/GestionNotas.Domain.csproj" />
+  <Project Path="../GestionNotas.Infraestructure/GestionNotas.Infraestructure.csproj" />
   <Project Path="GestionNotas.Api.csproj" />
 </Solution>
