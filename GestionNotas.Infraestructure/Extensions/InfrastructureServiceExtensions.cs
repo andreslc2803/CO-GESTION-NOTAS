@@ -1,6 +1,6 @@
-using GestionNotas.Api.Application.Common.Settings;
 using GestionNotas.Api.Infrastructure.Persistence;
-using GestionNotas.Api.Infrastructure.Settings;
+using GestionNotas.Domain.Interfaces.Repositories;
+using GestionNotas.Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,8 +31,9 @@ public static class InfrastructureServiceExtensions
             });
         });
 
-
-        //services.AddScoped<IAppSettingsPolicy, AppSettingsPolicy>();
+        services.AddScoped<IEstudianteRepository, EstudianteRepository>();
+        services.AddScoped<INotaRepository, NotaRepository>();
+        services.AddScoped<IProfesorRepository, IProfesorRepository>();
 
         return services;
     }

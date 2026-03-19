@@ -1,7 +1,5 @@
 ﻿using GestionNotas.Api.Application.Common.Models;
 using GestionNotas.Application.Transactions.Nota.Commands;
-using GestionNotas.Api.Domain.Entities;
-using GestionNotas.Domain.Interfaces.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using GestionNotas.Application.Transactions.Nota.Queries;
