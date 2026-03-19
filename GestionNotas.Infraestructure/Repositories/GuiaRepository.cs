@@ -7,7 +7,7 @@ using GestionNotas.Api.Infrastructure.Persistence.StoredProcedureResults;
 
 namespace GestionNotas.Api.Infrastructure.Repositories;
 
-public class GuiaRepository(ServiciosDbContext context) : IGuiaRepository
+public class GuiaRepository(GestionNotasDbContext context) : IGuiaRepository
 {
     public async Task<Guia?> ObtenerPorNumeroGuiaAsync(string numeroGuia, CancellationToken cancellationToken = default)
     {

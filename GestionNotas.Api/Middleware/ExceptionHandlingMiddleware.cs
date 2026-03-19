@@ -1,6 +1,6 @@
 ﻿using GestionNotas.Api.Application.Common.Models;
 using GestionNotas.Api.Domain.Exceptions;
-using System.ComponentModel.DataAnnotations;
+using ValidatioException = GestionNotas.Api.Application.Common.Exceptions.ValidationException;
 using System.Text.Json;
 
 namespace GestionNotas.Api.Middleware
@@ -15,9 +15,9 @@ namespace GestionNotas.Api.Middleware
             {
                 await next(context);
             }
-            catch (ValidationException ex)
+            catch (ValidatioException ex)
             {
-                logger.LogWarning("Errores de validación: {@Errors}", ex.Message);
+                logger.LogWarning("Errores de validación: {@Errors}", ex.Errors);
                 await EscribirRespuesta(context, StatusCodes.Status400BadRequest,
                     ApiResponse<object>.Failure(ex.Message));
             }

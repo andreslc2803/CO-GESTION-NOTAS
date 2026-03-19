@@ -14,9 +14,9 @@ public static class InfrastructureServiceExtensions
         IConfiguration configuration)
     {
 
-        services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
+        //services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
 
-        services.AddDbContext<ServiciosDbContext>((sp, options) =>
+        services.AddDbContext<GestionNotasDbContext>((sp, options) =>
         {
             var connectionString = configuration.GetConnectionString("ConnectionBd") ?? "";
 
@@ -32,7 +32,7 @@ public static class InfrastructureServiceExtensions
         });
 
 
-        services.AddScoped<IAppSettingsPolicy, AppSettingsPolicy>();
+        //services.AddScoped<IAppSettingsPolicy, AppSettingsPolicy>();
 
         return services;
     }
